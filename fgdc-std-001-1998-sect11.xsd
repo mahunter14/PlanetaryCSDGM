@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with Oxygen XML Editor by Systems Administrator (USGS) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://www.ascc.net/xml/schematron" blockDefault="#all">
+<xsd:element name="solarsys" type="solarsysType"/>
+<xsd:complexType name="solarsysType">
+	<xsd:sequence>
+		<xsd:element ref="planetsr" minOccurs="0"/>
+		<xsd:element ref="body"/>
+		<xsd:element ref="footprin" minOccurs="0"/>
+		<xsd:element ref="feature" minOccurs="0"/>
+		<xsd:element ref="litho" minOccurs="0"/>
+		<xsd:element ref="tempo" minOccurs="0"/>
+		<xsd:element ref="mission" minOccurs="0"/>
+		<xsd:element ref="instr" minOccurs="0"/>
+		<xsd:element ref="pdsstat" minOccurs="0"/>
+		<xsd:element ref="pdsarch" minOccurs="0"/>
+		<xsd:element ref="rover" minOccurs="0"/>
+		<xsd:element ref="sample" minOccurs="0"/>
+		<xsd:element ref="ctrlnet" minOccurs="0"/>
+		<xsd:element ref="bittype" minOccurs="0"/>
+		<xsd:element ref="scale" minOccurs="0"/>
+		<xsd:element ref="bands" minOccurs="0"/>
+		<xsd:element ref="wkt" minOccurs="0"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="planetsr" type="planetsrType"/>
+<xsd:simpleType name="planetsrType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="body" type="bodyType"/>
+<xsd:complexType name="bodyType">
+	<xsd:sequence>
+		<xsd:element ref="system"/>
+		<xsd:element ref="target"/>
+		<xsd:element ref="quadsys"/>
+		<xsd:element ref="quadname"/>
+		<xsd:element ref="rada"/>
+		<xsd:element ref="radb"/>
+		<xsd:element ref="radc"/>
+		<xsd:element ref="lattype"/>
+		<xsd:element ref="londom"/>
+		<xsd:element ref="londir"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="system" type="systemType"/>
+<xsd:simpleType name="systemType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="target" type="targetType"/>
+<xsd:simpleType name="targetType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="quadsys" type="quadsysType"/>
+<xsd:simpleType name="quadsysType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="quadname" type="quadnameType"/>
+<xsd:simpleType name="quadnameType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="rada" type="radaType"/>
+<xsd:simpleType name="radaType">
+	<xsd:restriction base="xsd:double"/>
+</xsd:simpleType>
+
+<xsd:element name="radb" type="radbType"/>
+<xsd:simpleType name="radbType">
+	<xsd:restriction base="xsd:double"/>
+</xsd:simpleType>
+
+<xsd:element name="radc" type="radcType"/>
+<xsd:simpleType name="radcType">
+	<xsd:restriction base="xsd:double"/>
+</xsd:simpleType>
+
+<xsd:element name="lattype" type="lattypeType"/>
+<xsd:simpleType name="lattypeType">
+	<xsd:restriction base="xsd:token">
+		<xsd:enumeration value="Planetocentric"/>
+		<xsd:enumeration value="Planetographic"/>
+	</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name="londom" type="londomType"/>
+<xsd:simpleType name="londomType">
+	<xsd:restriction base="xsd:token">
+		<xsd:enumeration value="0 to 360"/>
+		<xsd:enumeration value="-180 to 180"/>
+	</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name="londir" type="londirType"/>
+<xsd:simpleType name="londirType">
+	<xsd:restriction base="xsd:token">
+		<xsd:enumeration value="Positive East"/>
+		<xsd:enumeration value="Positive West"/>
+	</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name="footprin" type="footprinType"/>
+<xsd:complexType name="footprinType">
+	<xsd:sequence>
+		<xsd:element ref="maxlat"/>
+		<xsd:element ref="minlat"/>
+		<xsd:element ref="maxlon"/>
+		<xsd:element ref="minlon"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="maxlat" type="maxlatType"/>
+<xsd:simpleType name="maxlatType">
+	<xsd:restriction base="FGDClatitude"/>
+</xsd:simpleType>
+
+<xsd:element name="minlat" type="minlatType"/>
+<xsd:simpleType name="minlatType">
+	<xsd:restriction base="FGDClatitude"/>
+</xsd:simpleType>
+
+<xsd:element name="maxlon" type="maxlonType"/>
+<xsd:simpleType name="maxlonType">
+	<xsd:restriction base="PlanetaryLongitude"/>
+</xsd:simpleType>
+
+<xsd:element name="minlon" type="minlonType"/>
+<xsd:simpleType name="minlonType">
+	<xsd:restriction base="PlanetaryLongitude"/>
+</xsd:simpleType>
+
+<xsd:element name="feature" type="featureType"/>
+<xsd:complexType name="featureType">
+	<xsd:sequence>
+		<xsd:element ref="featkey"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="featkey" type="featkeyType"/>
+<xsd:simpleType name="featkeyType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="litho" type="lithoType"/>
+<xsd:complexType name="lithoType">
+	<xsd:sequence>
+		<xsd:element ref="lithokey"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="lithokey" type="lithokeyType"/>
+<xsd:simpleType name="lithokeyType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="tempo" type="tempoType"/>
+<xsd:complexType name="tempoType">
+	<xsd:sequence>
+		<xsd:element ref="tempokey"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="tempokey" type="tempokeyType"/>
+<xsd:simpleType name="tempokeyType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="mission" type="missionType"/>
+<xsd:complexType name="missionType">
+	<xsd:sequence>
+		<xsd:element ref="missikey"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="missikey" type="missikeyType"/>
+<xsd:simpleType name="missikeyType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="instr" type="instrType"/>
+<xsd:complexType name="instrType">
+	<xsd:sequence>
+		<xsd:element ref="instrkey"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="instrkey" type="instrkeyType"/>
+<xsd:simpleType name="instrkeyType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="pdsstat" type="pdsstatType"/>
+<xsd:simpleType name="pdsstatType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="pdsarch" type="pdsarchType"/>
+<xsd:simpleType name="pdsarchType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="rover" type="roverType"/>
+<xsd:complexType name="roverType">
+	<xsd:sequence>
+		<xsd:element ref="sol"/>
+		<xsd:element ref="featname"/>
+		<xsd:element ref="feattarg"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="sol" type="solType"/>
+<xsd:simpleType name="solType">
+	<xsd:restriction base="xsd:integer"/>
+</xsd:simpleType>
+
+<xsd:element name="featname" type="featnameType"/>
+<xsd:simpleType name="featnameType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="feattarg" type="feattargType"/>
+<xsd:simpleType name="feattargType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="sample" type="sampleType"/>
+<xsd:complexType name="sampleType">
+	<xsd:sequence>
+		<xsd:element ref="strdepth"/>
+		<xsd:element ref="endepth"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="strdepth" type="strdepthType"/>
+<xsd:simpleType name="strdepthType">
+	<xsd:restriction base="xsd:double"/>
+</xsd:simpleType>
+
+<xsd:element name="endepth" type="endepthType"/>
+<xsd:simpleType name="endepthType">
+	<xsd:restriction base="xsd:double"/>
+</xsd:simpleType>
+
+<xsd:element name="ctrlnet" type="ctrlnetType"/>
+<xsd:simpleType name="ctrlnetType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="bittype" type="bittypeType"/>
+<xsd:simpleType name="bittypeType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+
+<xsd:element name="scale" type="scaleType"/>
+<xsd:simpleType name="scaleType">
+	<xsd:restriction base="xsd:float"/>
+</xsd:simpleType>
+
+<xsd:element name="bands" type="bandsType"/>
+<xsd:simpleType name="bandsType">
+	<xsd:restriction base="xsd:integer"/>
+</xsd:simpleType>
+
+<xsd:element name="wkt" type="wktType"/>
+<xsd:simpleType name="wktType">
+	<xsd:restriction base="FGDCstring"/>
+</xsd:simpleType>
+	
+</xsd:schema>
